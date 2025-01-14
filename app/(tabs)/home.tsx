@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   contactName: {
-    fontSize:15,
+    fontSize: 20,
     fontWeight: 'bold',
   },
 })

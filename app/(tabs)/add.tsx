@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
+import { StyleSheet, Text, TextInput, View, Button, Alert } from 'react-native'
 import React from 'react'
 
 const add = () => {
@@ -6,6 +6,18 @@ const add = () => {
   const [name, setName] = React.useState('')
   const [phone, setPhone] = React.useState('')
   const [email, setEmail] = React.useState('')
+
+  const handleSubmit = async () => {
+    if(name && phone && email) {
+      // Zeige eine Erfolgsmeldung an 
+      Alert.alert('Perfecto', 'Se guardó su Contacto nuevo con éxito'); // Leere die Eingabefelder 
+      setName(''); 
+      setPhone(''); 
+      setEmail(''); 
+      } else {
+        Alert.alert('Error', 'No se pudo guardar el contacto')
+      }
+  }
 
   return (
     <View style={styles.containerAdd}>
@@ -16,7 +28,7 @@ const add = () => {
       <TextInput style={styles.input} value={phone} onChangeText={setPhone} />
       <Text>E-Mail:</Text>
       <TextInput style={styles.input} value={email} onChangeText={setEmail} />
-      <Button title="Guardar Contacto"></Button>
+      <Button title="Guardar Contacto" onPress={handleSubmit}></Button>
     </View>
   )
 }
