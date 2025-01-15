@@ -1,50 +1,31 @@
-# Welcome to your Expo app 👋
+# Contactos App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Esta es una aplicación sencilla de gestión de contactos creada con React Native. La aplicación permite a los usuarios agregar, ver y gestionar contactos.
 
-## Get started
+## Funciones
 
-1. Install dependencies
+- **Agregar contacto**: Los usuarios pueden agregar nuevos contactos ingresando el nombre, número de teléfono y dirección de correo electrónico.
+- **Ver lista de contactos**: Los usuarios pueden ver una lista de todos los contactos guardados.
 
+## Instalación
+
+1. **Clona el repositorio**:
    ```bash
-   npm install
-   ```
+   git clone https://github.com/diego-monfort-landolt/contactos.git
+   cd contactos
 
-2. Start the app
+## npm install
 
-   ```bash
-    npx expo start
-   ```
+## npm start
 
-In the output, you'll find options to open the app in a
+## Tecnologías utilizadas
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+React Native: Para la creación de la aplicación móvil.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+TypeScript: Para la tipificación y mejor calidad del código.
 
-## Get a fresh project
+Expo: Para el desarrollo y despliegue sencillo de la aplicación.
 
-When you're ready, run:
+## Ayuda y colaboración
 
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+¡La ayuda y la colaboración son bienvenidas! Si encuentras errores o tienes sugerencias de mejora, abre un issue en el repositorio o envía un pull request. Asegúrate de seguir las directrices de contribución y proporcionar una descripción clara de los cambios propuestos.
