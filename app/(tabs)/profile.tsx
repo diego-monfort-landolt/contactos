@@ -4,7 +4,7 @@ import React from 'react'
 const Profile = () => {
   return (
     <View style={styles.containerProfile}>
-      <Text style={styles.titleProfile}>Contactos</Text>
+      <Text style={styles.titleProfile}>Mi Perfil</Text>
     </View>
   )
 }
@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: '#fff',
     textAlign: 'left',
+    marginTop: 60,
     marginBottom: 10,
     letterSpacing: 2,
   }

@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TextInput, View, Button, Alert } from 'react-native'
 import React from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const add = () => {
   // Definiere Zustände für Name, Telefon und E-Mail
@@ -9,16 +10,26 @@ const add = () => {
 
   const handleSubmit = async () => {
     if(name && phone && email) {
-      // Zeige eine Erfolgsmeldung an 
-      Alert.alert('Perfecto', 'Se guardó su Contacto nuevo con éxito'); // Leere die Eingabefelder 
-      setName(''); 
-      setPhone(''); 
-      setEmail(''); 
-      } else {
-        Alert.alert('Error', 'No se pudo guardar el contacto')
+      const contact = {name, phone, email};
+      const existingContactsString = await AsyncStorage.getItem('contacts');
+      let contacts = [];
+      if(existingContactsString) {
+        contacts = JSON.parse(existingContactsString);
       }
-  }
 
+      contacts.push(contact);
+      await AsyncStorage.setItem('contacts', JSON.stringify(contacts));
+
+      Alert.alert('Guardado con exito',
+        'Nombre: ' + name + '\nTelefono: ' + phone + '\nE-Mail ' + email 
+      );
+      setName('');
+      setPhone('');
+      setEmail('');
+    } else {
+      Alert.alert('Error', 'Porfavor revisa el formulario.');
+    }
+  };
   return (
     <View style={styles.containerAdd}>
       <Text style={styles.title}>Contacto nuevo</Text>
@@ -41,12 +52,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey',
     padding: 20,
     textAlign: 'center',
-    marginTop: 0,
+    
   },
   title: {
     fontSize: 25,
     fontWeight: 'bold',
     color: '#000',
+    marginTop: 60,
     marginBottom: 10,
     letterSpacing: 2,
   },

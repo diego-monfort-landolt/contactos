@@ -18,6 +18,10 @@ Esta es una aplicación sencilla de gestión de contactos creada con React Nativ
 
 ## npm start
 
+## Install Expo Go ( Mobile )
+
+## Npx expo start
+
 ## Tecnologías utilizadas
 
 React Native: Para la creación de la aplicación móvil.

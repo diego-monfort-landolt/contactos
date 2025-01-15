@@ -1,35 +1,29 @@
 import { StyleSheet, Text, View, FlatList } from 'react-native'
-import React from 'react'
+import React, { useCallback } from 'react'
+import { useFocusEffect } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Home = () => {
+
   type Contact = { 
     name: string; 
     phone: string; 
     email: string; 
   };
 
-  const contacts: Contact[] = [
-    {
-      name: 'Juan',
-      phone: '1234567890',
-      email: 'juan@huan.es',
-    },
-    {
-      name: 'Carla',
-      phone: '1234567890',
-      email: 'Carla@huan.es',
-    },
-    {
-      name: 'Pepe',
-      phone: '1234567890',
-      email: 'pepe@huan.es',
-    },
-    {
-      name: 'Hugo',
-      phone: '1234567890',
-      email: 'Hugo@huan.es',
-    },
-  ]
+  const [contacts, setContacts] = React.useState<Contact[]>([]);
+ 
+
+  useFocusEffect(
+    useCallback( () => {
+        AsyncStorage.getItem('contacts')
+        .then( (existingContactsString) => {
+            if(existingContactsString) {
+                setContacts(JSON.parse(existingContactsString));
+            }
+          });
+    }, [])
+);
  
 
   const renderItem = ({ item }: { item: Contact }) => (
@@ -65,6 +59,7 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
     fontWeight: 'bold',
     marginBottom: 20,
+    marginTop: 60,
     textAlign: 'center',
   },
   contactItem: {
