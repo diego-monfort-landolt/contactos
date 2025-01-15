@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native'
 import React from 'react'
 import { Tabs } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons'
-import { DarkTheme } from '@react-navigation/native'
 
 const TabsLayout = () => {
   return (
@@ -13,6 +12,7 @@ const TabsLayout = () => {
         tabBarIcon: ({ color, size }) => (
           <Ionicons name='home' color={color} size={size}/>
         ),
+        headerShown: false
       }}
       />
 
@@ -20,6 +20,7 @@ const TabsLayout = () => {
         tabBarIcon: ({ color, size }) => (
           <Ionicons name='add' color={color} size={size}/>
         ),
+        headerShown: false
       }}
       />
 
@@ -27,6 +28,7 @@ const TabsLayout = () => {
         tabBarIcon: ({ color, size }) => (
           <Ionicons name='person' color={color} size={size}/>
         ),
+        headerShown: false
       }}
       />
     </Tabs>
