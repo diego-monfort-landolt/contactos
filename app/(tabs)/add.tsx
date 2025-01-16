@@ -51,8 +51,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     backgroundColor: 'lightgrey',
     padding: 20,
-    textAlign: 'center',
-    
+    textAlign: 'center',  
   },
   title: {
     fontSize: 25,

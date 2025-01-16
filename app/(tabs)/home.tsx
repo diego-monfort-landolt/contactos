@@ -13,7 +13,6 @@ const Home = () => {
 
   const [contacts, setContacts] = React.useState<Contact[]>([]);
  
-
   useFocusEffect(
     useCallback( () => {
         AsyncStorage.getItem('contacts')
@@ -25,7 +24,6 @@ const Home = () => {
     }, [])
 );
  
-
   const renderItem = ({ item }: { item: Contact }) => (
     <View style={styles.contactItem}>
       <Text style={styles.contactName}>{item.name}</Text>
@@ -45,7 +43,6 @@ const Home = () => {
     </View>
   )
 }
-
 export default Home
 
 const styles = StyleSheet.create({
