@@ -10,7 +10,6 @@ const Index = () => {
     </View>
   );
 };
-
 export default Index;
 
 const styles = StyleSheet.create({

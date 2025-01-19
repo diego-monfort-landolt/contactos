@@ -56,7 +56,7 @@ const Profile = () => {
       quality: 1,
     });
 
-    if (!result.cancelled) {
+    if (!result.canceled) {
       setProfileImage(result.uri);
     }
   };
@@ -95,7 +95,6 @@ const Profile = () => {
     </View>
   );
 };
-
 export default Profile;
 
 const styles = StyleSheet.create({
