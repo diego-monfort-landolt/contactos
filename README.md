@@ -17,17 +17,18 @@ Esta es una aplicación sencilla de gestión de contactos creada con React Nativ
 ## npm install
 
 ## npm start
+Este comando inicia tu aplicación.
 
 ## Install Expo Go ( Mobile )
+Expo Go es una aplicación móvil que te permite ejecutar y probar tus aplicaciones Expo en tu dispositivo móvil. Puedes descargarla desde la App Store (iOS) o Google Play Store (Android).
 
 ## Npx expo start
+Este comando inicia el servidor de desarrollo de Expo, permitiéndote ver tu aplicación en tiempo real en tu dispositivo móvil o emulador. npx ejecuta el comando expo start sin necesidad de instalar Expo globalmente.
 
 ## Tecnologías utilizadas
 
 React Native: Para la creación de la aplicación móvil.
-
 TypeScript: Para la tipificación y mejor calidad del código.
-
 Expo: Para el desarrollo y despliegue sencillo de la aplicación.
 
 ## Ayuda y colaboración
