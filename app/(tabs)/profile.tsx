@@ -7,7 +7,7 @@ const Profile = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [profileImage, setProfileImage] = useState(null);
+  const [profileImage, setProfileImage] = useState<string | null>(null);
   const [isEditing, setIsEditing] = useState(true);
 
   useEffect(() => {
@@ -56,8 +56,8 @@ const Profile = () => {
       quality: 1,
     });
 
-    if (!result.cancelled) {
-      setProfileImage(result.uri);
+    if (!result.canceled) {
+      setProfileImage(result.assets[0].uri);
     } else {
       Alert.alert('Error', 'No se seleccionó ninguna imagen');
     }
@@ -88,6 +88,7 @@ const Profile = () => {
       ) : (
         <>
           {profileImage && <Image source={{ uri: profileImage }} style={styles.profileImage} />}
+          {profileImage && <Text style={styles.profileDetailText}>Foto de perfil</Text>}
           <Text style={styles.profileDetailText}>Nombre: {name}</Text>
           <Text style={styles.profileDetailText}>Correo electrónico: {email}</Text>
           <Text style={styles.profileDetailText}>Teléfono: {phone}</Text>
