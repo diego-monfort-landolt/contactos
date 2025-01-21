@@ -48,7 +48,7 @@ const Profile = () => {
     setIsEditing(false);
   };
 
-  const pickImage = async () => {
+ const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
@@ -56,8 +56,10 @@ const Profile = () => {
       quality: 1,
     });
 
-    if (!result.canceled) {
+    if (!result.cancelled) {
       setProfileImage(result.uri);
+    } else {
+      Alert.alert('Error', 'No se seleccionó ninguna imagen');
     }
   };
 
