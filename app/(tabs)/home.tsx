@@ -6,17 +6,20 @@ import { AntDesign, Feather } from '@expo/vector-icons';
 
 const Home = () => {
 
+  // Typdefinition für einen Kontakt
   type Contact = { 
     name: string; 
     phone: string; 
     email: string; 
   };
 
+  // Zustandshaken für die Kontaktliste und Modale
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [currentContact, setCurrentContact] = useState<Contact | null>(null);
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
 
+  // useFocusEffect-Haken zum Laden der gespeicherten Kontakte beim Start
   useFocusEffect(
     useCallback(() => {
       AsyncStorage.getItem('contacts')
@@ -28,6 +31,7 @@ const Home = () => {
     }, [])
   );
 
+  // Funktion zum Löschen eines Kontakts
   const deleteContact = (index: number) => {
     Alert.alert(
       "Eliminar contacto",
@@ -50,12 +54,14 @@ const Home = () => {
     );
   };
 
+   // Funktion zum Bearbeiten eines Kontakts
   const editContact = (index: number) => {
     setCurrentContact(contacts[index]);
     setCurrentIndex(index);
     setModalVisible(true);
   };
 
+  // Funktion zum Speichern eines bearbeiteten Kontakts
   const saveContact = () => {
     if (currentContact && currentIndex !== null) {
       const newContacts = [...contacts];
@@ -66,6 +72,7 @@ const Home = () => {
     }
   };
 
+  // Funktion zum Rendern eines Kontakts
   const renderItem = ({ item, index }: { item: Contact, index: number }) => (
     <View style={styles.contactItem}>
       <Text style={styles.contactName}>{item.name}</Text>
