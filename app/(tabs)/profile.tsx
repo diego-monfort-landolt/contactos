@@ -4,12 +4,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as ImagePicker from 'expo-image-picker';
 
 const Profile = () => {
+  // Zustandshaken für die Profilinformationen
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [profileImage, setProfileImage] = useState<string | null>(null);
   const [isEditing, setIsEditing] = useState(true);
 
+  // useEffect-Haken zum Laden der gespeicherten Profilinformationen beim Start
   useEffect(() => {
     const loadProfile = async () => {
       const storedName = await AsyncStorage.getItem('name');
@@ -26,6 +28,7 @@ const Profile = () => {
     loadProfile();
   }, []);
 
+  // useEffect-Haken zum Anfordern von Berechtigungen für den Zugriff auf die Galerie
   useEffect(() => {
     const requestPermission = async () => {
       const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -37,6 +40,7 @@ const Profile = () => {
     requestPermission();
   }, []);
 
+  // Funktion zum Speichern der Profilinformationen
   const handleSave = async () => {
     await AsyncStorage.setItem('name', name);
     await AsyncStorage.setItem('email', email);
@@ -48,6 +52,7 @@ const Profile = () => {
     setIsEditing(false);
   };
 
+  // Funktion zum Auswählen eines Bildes aus der Galerie
  const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
