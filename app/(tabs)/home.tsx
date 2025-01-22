@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View, FlatList } from 'react-native'
-import React, { useCallback } from 'react'
+import { StyleSheet, Text, View, FlatList, TouchableOpacity, Alert, TextInput, Modal, Button } from 'react-native';
+import React, { useCallback, useState } from 'react';
 import { useFocusEffect } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AntDesign, Feather } from '@expo/vector-icons';
 
 const Home = () => {
 
@@ -11,24 +12,71 @@ const Home = () => {
     email: string; 
   };
 
-  const [contacts, setContacts] = React.useState<Contact[]>([]);
- 
+  const [contacts, setContacts] = useState<Contact[]>([]);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [currentContact, setCurrentContact] = useState<Contact | null>(null);
+  const [currentIndex, setCurrentIndex] = useState<number | null>(null);
+
   useFocusEffect(
-    useCallback( () => {
-        AsyncStorage.getItem('contacts')
-        .then( (existingContactsString) => {
-            if(existingContactsString) {
-                setContacts(JSON.parse(existingContactsString));
-            }
-          });
+    useCallback(() => {
+      AsyncStorage.getItem('contacts')
+        .then((existingContactsString) => {
+          if (existingContactsString) {
+            setContacts(JSON.parse(existingContactsString));
+          }
+        });
     }, [])
-);
- 
-  const renderItem = ({ item }: { item: Contact }) => (
+  );
+
+  const deleteContact = (index: number) => {
+    Alert.alert(
+      "Eliminar contacto",
+      "¿Estás seguro de que deseas eliminar este contacto?",
+      [
+        {
+          text: "Cancelar",
+          style: "cancel"
+        },
+        {
+          text: "Eliminar",
+          onPress: () => {
+            const newContacts = [...contacts];
+            newContacts.splice(index, 1);
+            setContacts(newContacts);
+            AsyncStorage.setItem('contacts', JSON.stringify(newContacts));
+          }
+        }
+      ]
+    );
+  };
+
+  const editContact = (index: number) => {
+    setCurrentContact(contacts[index]);
+    setCurrentIndex(index);
+    setModalVisible(true);
+  };
+
+  const saveContact = () => {
+    if (currentContact && currentIndex !== null) {
+      const newContacts = [...contacts];
+      newContacts[currentIndex] = currentContact;
+      setContacts(newContacts);
+      AsyncStorage.setItem('contacts', JSON.stringify(newContacts));
+      setModalVisible(false);
+    }
+  };
+
+  const renderItem = ({ item, index }: { item: Contact, index: number }) => (
     <View style={styles.contactItem}>
       <Text style={styles.contactName}>{item.name}</Text>
       <Text>{item.phone}</Text>
       <Text>{item.email}</Text>
+      <TouchableOpacity style={styles.deleteIcon} onPress={() => deleteContact(index)}>
+        <AntDesign name="close" size={24} color="black" />
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.editIcon} onPress={() => editContact(index)}>
+        <Feather name="edit" size={24} color="black" />
+      </TouchableOpacity>
     </View>
   );
 
@@ -37,13 +85,46 @@ const Home = () => {
       <Text style={styles.title}>Mis Contactos</Text>
       <FlatList
         data={contacts}
-        renderItem={ renderItem }
-        keyExtractor={(Item, index) => index.toString()} 
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index.toString()}
       />
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.modalView}>
+          <Text style={styles.modalText}>Editar Contacto</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Nombre"
+            value={currentContact?.name}
+            onChangeText={(text) => setCurrentContact({ ...currentContact, name: text } as Contact)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Teléfono"
+            value={currentContact?.phone}
+            onChangeText={(text) => setCurrentContact({ ...currentContact, phone: text } as Contact)}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Correo Electrónico"
+            value={currentContact?.email}
+            onChangeText={(text) => setCurrentContact({ ...currentContact, email: text } as Contact)}
+          />
+          <Button title="Guardar" onPress={saveContact} />
+          <Button title="Cancelar" onPress={() => setModalVisible(false)} />
+        </View>
+      </Modal>
     </View>
-  )
-}
-export default Home
+  );
+};
+
+export default Home;
 
 const styles = StyleSheet.create({
   containerHome: {
@@ -64,9 +145,49 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     marginBottom: 10,
     borderRadius: 10,
+    position: 'relative',
   },
   contactName: {
     fontSize: 20,
     fontWeight: 'bold',
   },
-})
+  deleteIcon: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+  },
+  editIcon: {
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 10,
+    paddingLeft: 10,
+    width: '100%',
+  },
+});
