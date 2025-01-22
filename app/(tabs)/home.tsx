@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList, TouchableOpacity, Alert, TextInput, Modal, Button } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity, Alert, TextInput, Modal } from 'react-native';
 import React, { useCallback, useState } from 'react';
 import { useFocusEffect } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -117,8 +117,12 @@ const Home = () => {
             onChangeText={(text) => setCurrentContact({ ...currentContact, email: text } as Contact)}
           />
           <View style={styles.buttonContainer}>
-            <Button title="Guardar" onPress={saveContact} style={styles.button} />
-            <Button title="Cancelar" onPress={() => setModalVisible(false)} style={styles.button} />
+            <TouchableOpacity style={[styles.button, styles.saveButton]} onPress={saveContact}>
+              <Text style={styles.buttonText}>Guardar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.button, styles.cancelButton]} onPress={() => setModalVisible(false)}>
+              <Text style={styles.buttonText}>Cancelar</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </Modal>
@@ -197,10 +201,22 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 5,
     borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  saveButton: {
+    backgroundColor: 'green',
+  },
+  cancelButton: {
+    backgroundColor: 'red',
   },
 });
