@@ -35,8 +35,8 @@ Expo: Para el desarrollo y despliegue sencillo de la aplicación.
 
 ¡La ayuda y la colaboración son bienvenidas! Si encuentras errores o tienes sugerencias de mejora, abre un issue en el repositorio o envía un pull request. Asegúrate de seguir las directrices de contribución y proporcionar una descripción clara de los cambios propuestos.
 
-<div style="display: flex; justify-content: space-around;">
-  <img src="./assets/images/contactosIMG3.png" alt="alt text" style="width: 30%; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);" />
-  <img src="./assets/images/contactosIMG1.png" alt="alt text" style="width: 30%; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);" />
-  <img src="./assets/images/contactosIMG2.png" alt="alt text" style="width: 30%; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);" />
+<div style="display: flex; justify-content: space-around; width: 100%;">
+  <img src="./assets/images/contactosIMG3.png" alt="alt text" style="width: 30%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(248, 137, 137, 0.1);" />
+  <img src="./assets/images/contactosIMG1.png" alt="alt text" style="width: 30%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(248, 137, 137, 0.1);" />
+  <img src="./assets/images/contactosIMG2.png" alt="alt text" style="width: 30%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(248, 137, 137, 0.1);" />
 </div>
