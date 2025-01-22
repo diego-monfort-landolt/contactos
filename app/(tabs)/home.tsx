@@ -116,8 +116,10 @@ const Home = () => {
             value={currentContact?.email}
             onChangeText={(text) => setCurrentContact({ ...currentContact, email: text } as Contact)}
           />
-          <Button title="Guardar" onPress={saveContact} />
-          <Button title="Cancelar" onPress={() => setModalVisible(false)} />
+          <View style={styles.buttonContainer}>
+            <Button title="Guardar" onPress={saveContact} style={styles.button} />
+            <Button title="Cancelar" onPress={() => setModalVisible(false)} style={styles.button} />
+          </View>
         </View>
       </Modal>
     </View>
@@ -188,6 +190,17 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
     paddingLeft: 10,
+    width: '100%',
+  },
+  button: {
+    flex: 1,
+    height: 40,
+    margin: 5,
+    borderRadius: 10,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     width: '100%',
   },
 });
