@@ -34,3 +34,5 @@ Expo: Para el desarrollo y despliegue sencillo de la aplicación.
 ## Ayuda y colaboración
 
 ¡La ayuda y la colaboración son bienvenidas! Si encuentras errores o tienes sugerencias de mejora, abre un issue en el repositorio o envía un pull request. Asegúrate de seguir las directrices de contribución y proporcionar una descripción clara de los cambios propuestos.
+
+![alt text](contactosIMG3.png)  ![alt text](contactosIMG1.png)  ![alt text](contactosIMG2.png)
