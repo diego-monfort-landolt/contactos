@@ -36,7 +36,6 @@ const Profile = () => {
         Alert.alert('Error', 'Se requieren permisos para acceder a la galería');
       }
     };
-
     requestPermission();
   }, []);
 
@@ -60,7 +59,6 @@ const Profile = () => {
       aspect: [4, 3],
       quality: 1,
     });
-
     if (!result.canceled) {
       setProfileImage(result.assets[0].uri);
     } else {
