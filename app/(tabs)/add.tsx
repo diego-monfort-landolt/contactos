@@ -8,6 +8,7 @@ const add = () => {
   const [phone, setPhone] = React.useState('')
   const [email, setEmail] = React.useState('')
 
+  // Funktion zum Speichern des neuen Kontakts
   const handleSubmit = async () => {
     if(name && phone && email) {
       const contact = {name, phone, email};
@@ -17,6 +18,7 @@ const add = () => {
         contacts = JSON.parse(existingContactsString);
       }
 
+      // Füge den neuen Kontakt zur Kontaktliste hinzu
       contacts.push(contact);
       await AsyncStorage.setItem('contacts', JSON.stringify(contacts));
 
