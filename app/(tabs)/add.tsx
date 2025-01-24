@@ -2,7 +2,7 @@ import { StyleSheet, Text, TextInput, View, Button, Alert } from 'react-native'
 import React from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const add = () => {
+export const add = () => {
   // Definiere Zustände für Name, Telefon und E-Mail
   const [name, setName] = React.useState('')
   const [phone, setPhone] = React.useState('')
@@ -22,6 +22,7 @@ const add = () => {
       contacts.push(contact);
       await AsyncStorage.setItem('contacts', JSON.stringify(contacts));
 
+      // Zeige eine Erfolgsmeldung an und leere das Formular
       Alert.alert('Guardado con exito',
         'Nombre: ' + name + '\nTelefono: ' + phone + '\nE-Mail ' + email 
       );
@@ -29,6 +30,8 @@ const add = () => {
       setPhone('');
       setEmail('');
     } else {
+      {
+        // Zeige eine Fehlermeldung an, wenn das Formular unvollständig ist
       Alert.alert('Error', 'Porfavor revisa el formulario.');
     }
   };
@@ -45,9 +48,8 @@ const add = () => {
     </View>
   )
 }
+// entferne: export default add; am start der funktion hinzugefügt
 
-export default add
-// Stile für die Komponenten
 const styles = StyleSheet.create({
   containerAdd: {
     display: 'flex',
@@ -69,4 +71,4 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginTop: 5,
   }
-})
+})};
