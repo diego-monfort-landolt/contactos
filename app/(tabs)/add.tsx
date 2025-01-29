@@ -49,7 +49,6 @@ const Add = () => {
     </View>
   );
 };
-
 export default Add;
 
 const styles = StyleSheet.create({
