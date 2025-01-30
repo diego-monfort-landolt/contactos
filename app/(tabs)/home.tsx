@@ -12,7 +12,6 @@ const Home = () => {
     phone: string; 
     email: string; 
   };
-
   // Zustandshaken für die Kontaktliste und Modale
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [modalVisible, setModalVisible] = useState(false);
@@ -30,7 +29,6 @@ const Home = () => {
         });
     }, [])
   );
-
   // Funktion zum Löschen eines Kontakts
   const deleteContact = (index: number) => {
     Alert.alert(
@@ -53,7 +51,6 @@ const Home = () => {
       ]
     );
   };
-
    // Funktion zum Bearbeiten eines Kontakts
   const editContact = (index: number) => {
     setCurrentContact(contacts[index]);
