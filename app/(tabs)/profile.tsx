@@ -10,7 +10,6 @@ const Profile = () => {
   const [phone, setPhone] = useState('');
   const [profileImage, setProfileImage] = useState<string | null>(null);
   const [isEditing, setIsEditing] = useState(true);
-
   // useEffect-Haken zum Laden der gespeicherten Profilinformationen beim Start
   useEffect(() => {
     const loadProfile = async () => {
@@ -27,7 +26,6 @@ const Profile = () => {
 
     loadProfile();
   }, []);
-
   // useEffect-Haken zum Anfordern von Berechtigungen für den Zugriff auf die Galerie
   useEffect(() => {
     const requestPermission = async () => {
@@ -38,7 +36,6 @@ const Profile = () => {
     };
     requestPermission();
   }, []);
-
   // Funktion zum Speichern der Profilinformationen
   const handleSave = async () => {
     await AsyncStorage.setItem('name', name);
@@ -50,7 +47,6 @@ const Profile = () => {
     Alert.alert('Éxito', 'Perfil guardado con éxito');
     setIsEditing(false);
   };
-
   // Funktion zum Auswählen eines Bildes aus der Galerie
  const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
