@@ -11,6 +11,7 @@ const Home = () => {
     name: string; 
     phone: string; 
     email: string; 
+    favorite: boolean; 
   };
   // Zustandshaken für die Kontaktliste und Modale
   const [contacts, setContacts] = useState<Contact[]>([]);
@@ -69,9 +70,20 @@ const Home = () => {
     }
   };
 
+  // Funktion zum Markieren eines Kontakts als Favorit
+  const toggleFavorite = async (index: number) => {
+    const newContacts = [...contacts];
+    newContacts[index].favorite = !newContacts[index].favorite;
+    setContacts(newContacts);
+    await AsyncStorage.setItem('contacts', JSON.stringify(newContacts));
+  };
+
   // Funktion zum Rendern eines Kontakts
   const renderItem = ({ item, index }: { item: Contact, index: number }) => (
     <View style={styles.contactItem}>
+      <TouchableOpacity onPress={() => toggleFavorite(index)}>
+        <AntDesign name="star" size={24} color={item.favorite ? 'green' : 'black'} style={styles.favoriteIcon} />
+      </TouchableOpacity>
       <Text style={styles.contactName}>{item.name}</Text>
       <Text>{item.phone}</Text>
       <Text>{item.email}</Text>
@@ -83,12 +95,13 @@ const Home = () => {
       </TouchableOpacity>
     </View>
   );
+  
 
   return (
     <View style={styles.containerHome}>
       <Text style={styles.title}>Mis Contactos</Text>
       <FlatList
-        data={contacts}
+        data={contacts.sort((a, b) => Number(b.favorite) - Number(a.favorite))}
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
       />
@@ -156,10 +169,16 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 10,
     position: 'relative',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   contactName: {
     fontSize: 20,
     fontWeight: 'bold',
+    flex: 1,
+  },
+  favoriteIcon: {
+    marginRight: 10,
   },
   deleteIcon: {
     position: 'absolute',
