@@ -95,7 +95,6 @@ const Home = () => {
       </TouchableOpacity>
     </View>
   );
-  
 
   return (
     <View style={styles.containerHome}>
@@ -164,7 +163,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   contactItem: {
-    padding: 10,
+    padding: 40,
     backgroundColor: 'white',
     marginBottom: 10,
     borderRadius: 10,
@@ -184,11 +183,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 10,
     right: 10,
+    marginVertical: 5,
   },
   editIcon: {
     position: 'absolute',
     bottom: 10,
     right: 10,
+    marginVertical: 5,
   },
   modalView: {
     margin: 20,
