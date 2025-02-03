@@ -163,13 +163,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   contactItem: {
-    padding: 40,
+    padding: 10,
     backgroundColor: 'white',
     marginBottom: 10,
     borderRadius: 10,
     position: 'relative',
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
   },
   contactName: {
     fontSize: 20,
@@ -177,7 +177,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   favoriteIcon: {
-    marginRight: 10,
+    position: 'absolute',
+    top: 10,
+    left: 10,
   },
   deleteIcon: {
     position: 'absolute',
