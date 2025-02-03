@@ -84,9 +84,11 @@ const Home = () => {
       <TouchableOpacity onPress={() => toggleFavorite(index)}>
         <AntDesign name="star" size={24} color={item.favorite ? 'green' : 'black'} style={styles.favoriteIcon} />
       </TouchableOpacity>
-      <Text style={styles.contactName}>{item.name}</Text>
-      <Text>{item.phone}</Text>
-      <Text>{item.email}</Text>
+      <View style={styles.contactTextContainer}>
+        <Text style={styles.contactName}>{item.name}</Text>
+        <Text>{item.phone}</Text>
+        <Text>{item.email}</Text>
+      </View>
       <TouchableOpacity style={styles.deleteIcon} onPress={() => deleteContact(index)}>
         <AntDesign name="close" size={24} color="black" />
       </TouchableOpacity>
@@ -168,18 +170,19 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 10,
     position: 'relative',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  contactTextContainer: {
+    flex: 1,
+    marginLeft: 10,
   },
   contactName: {
     fontSize: 20,
     fontWeight: 'bold',
-    flex: 1,
   },
   favoriteIcon: {
-    position: 'absolute',
-    top: 10,
-    left: 10,
+    marginRight: 10,
   },
   deleteIcon: {
     position: 'absolute',
