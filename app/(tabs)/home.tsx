@@ -5,7 +5,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AntDesign, Feather } from '@expo/vector-icons';
 
 const Home = () => {
-
   // Typdefinition für einen Kontakt
   type Contact = { 
     name: string; 
@@ -18,7 +17,6 @@ const Home = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [currentContact, setCurrentContact] = useState<Contact | null>(null);
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
-
   // useFocusEffect-Haken zum Laden der gespeicherten Kontakte beim Start
   useFocusEffect(
     useCallback(() => {
@@ -58,7 +56,6 @@ const Home = () => {
     setCurrentIndex(index);
     setModalVisible(true);
   };
-
   // Funktion zum Speichern eines bearbeiteten Kontakts
   const saveContact = () => {
     if (currentContact && currentIndex !== null) {
@@ -69,7 +66,6 @@ const Home = () => {
       setModalVisible(false);
     }
   };
-
   // Funktion zum Markieren eines Kontakts als Favorit
   const toggleFavorite = async (index: number) => {
     const newContacts = [...contacts];
@@ -77,7 +73,6 @@ const Home = () => {
     setContacts(newContacts);
     await AsyncStorage.setItem('contacts', JSON.stringify(newContacts));
   };
-
   // Funktion zum Rendern eines Kontakts
   const renderItem = ({ item, index }: { item: Contact, index: number }) => (
     <View style={styles.contactItem}>
@@ -97,7 +92,6 @@ const Home = () => {
       </TouchableOpacity>
     </View>
   );
-
   return (
     <View style={styles.containerHome}>
       <Text style={styles.title}>Mis Contactos</Text>
