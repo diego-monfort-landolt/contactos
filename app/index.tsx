@@ -5,7 +5,7 @@ import { Link } from 'expo-router';
 const Index = () => {
   return (
     <ImageBackground
-      source={{ uri: 'https://cdn.pixabay.com/photo/2021/11/30/00/54/sweden-6834164_640.jpg' }}
+      source={{ uri:'https://cdn.pixabay.com/photo/2021/11/30/00/54/sweden-6834164_640.jpg' }}
       style={styles.background}
       imageStyle={styles.backgroundImage}
     >
