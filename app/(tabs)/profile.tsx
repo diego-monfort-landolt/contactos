@@ -23,7 +23,6 @@ const Profile = () => {
       if (storedPhone) setPhone(storedPhone);
       if (storedProfileImage) setProfileImage(storedProfileImage);
     };
-
     loadProfile();
   }, []);
   // useEffect-Haken zum Anfordern von Berechtigungen für den Zugriff auf die Galerie
@@ -61,7 +60,6 @@ const Profile = () => {
       Alert.alert('Error', 'No se seleccionó ninguna imagen');
     }
   };
-
   return (
     <View style={styles.containerProfile}>
       <Text style={styles.titleProfile}>Mi Perfil</Text>
