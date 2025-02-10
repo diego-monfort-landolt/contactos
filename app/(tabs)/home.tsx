@@ -52,7 +52,6 @@ const Home = () => {
       ]
     );
   };
-
   // Funktion zum Bearbeiten eines Kontakts
   const editContact = (index: number) => {
     setCurrentContact(contacts[index]);
