@@ -98,7 +98,6 @@ const Home = () => {
       </TouchableOpacity>
     </View>
   );
-
   return (
     <View style={styles.containerHome}>
       <Text style={styles.title}>Mis Contactos</Text>
