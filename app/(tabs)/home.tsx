@@ -70,7 +70,6 @@ const Home = () => {
       setModalVisible(false);
     }
   };
-
   // Funktion zum Markieren eines Kontakts als Favorit
   const toggleFavorite = async (index: number) => {
     const newContacts = [...contacts];
