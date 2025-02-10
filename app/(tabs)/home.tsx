@@ -17,7 +17,6 @@ const Home = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [currentContact, setCurrentContact] = useState<Contact | null>(null);
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
-
   // useFocusEffect-Haken zum Laden der gespeicherten Kontakte beim Start
   useFocusEffect(
     useCallback(() => {
