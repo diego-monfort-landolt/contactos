@@ -59,7 +59,6 @@ const Home = () => {
     setCurrentIndex(index);
     setModalVisible(true);
   };
-
   // Funktion zum Speichern eines bearbeiteten Kontakts
   const saveContact = async () => {
     if (currentContact && currentIndex !== null) {
