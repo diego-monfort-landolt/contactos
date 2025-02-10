@@ -78,7 +78,6 @@ const Home = () => {
     setContacts(newContacts);
     await AsyncStorage.setItem('contacts', JSON.stringify(newContacts));
   };
-
   // Funktion zum Rendern eines Kontakts
   const renderItem = ({ item, index }: { item: Contact, index: number }) => (
     <View style={styles.contactItem}>
