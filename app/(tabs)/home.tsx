@@ -28,7 +28,6 @@ const Home = () => {
         });
     }, [])
   );
-
   // Funktion zum Löschen eines Kontakts
   const deleteContact = (index: number) => {
     Alert.alert(
