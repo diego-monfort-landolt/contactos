@@ -17,7 +17,6 @@ const Add = () => {
       if (existingContactsString) {
         contacts = JSON.parse(existingContactsString);
       }
-
       // Füge den neuen Kontakt zur Kontaktliste hinzu
       contacts.push(contact);
       await AsyncStorage.setItem('contacts', JSON.stringify(contacts));
