@@ -7,7 +7,6 @@ const Add = () => {
   const [name, setName] = React.useState('');
   const [phone, setPhone] = React.useState('');
   const [email, setEmail] = React.useState('');
-
   // Funktion zum Speichern des neuen Kontakts
   const handleSubmit = async () => {
     if (name && phone && email) {
