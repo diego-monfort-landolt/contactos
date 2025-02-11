@@ -35,7 +35,6 @@ const Add = () => {
       Alert.alert('Error', 'Porfavor revisa el formulario.');
     }
   };
-
   return (
     <View style={styles.containerAdd}>
       <Text style={styles.title}>Contacto nuevo</Text>
