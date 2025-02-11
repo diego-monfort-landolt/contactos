@@ -21,7 +21,6 @@ const Add = () => {
       // Füge den neuen Kontakt zur Kontaktliste hinzu
       contacts.push(contact);
       await AsyncStorage.setItem('contacts', JSON.stringify(contacts));
-
       // Zeige eine Erfolgsmeldung an und leere das Formular
       Alert.alert(
         'Guardado con exito',
