@@ -16,7 +16,6 @@ const Index = () => {
     </ImageBackground>
   );
 };
-
 export default Index;
 
 const styles = StyleSheet.create({
