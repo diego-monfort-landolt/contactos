@@ -32,7 +32,5 @@ const TabsLayout = () => {
     </Tabs>
   )
 }
-
 export default TabsLayout
-
 const styles = StyleSheet.create({})
