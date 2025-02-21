@@ -46,7 +46,6 @@ const Add = () => {
   );
 };
 export default Add;
-
 const styles = StyleSheet.create({
   containerAdd: {
     display: 'flex',
