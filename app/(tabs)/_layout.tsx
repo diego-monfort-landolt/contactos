@@ -15,7 +15,6 @@ const TabsLayout = () => {
         headerShown: false
       }}
       />
-
       <Tabs.Screen name='add' options={{
         tabBarIcon: ({ color, size }) => (
           <Ionicons name='add' color={color} size={size}/>
@@ -23,7 +22,6 @@ const TabsLayout = () => {
         headerShown: false
       }}
       />
-
       <Tabs.Screen name='profile' options={{
         tabBarIcon: ({ color, size }) => (
           <Ionicons name='person' color={color} size={size}/>
